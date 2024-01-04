@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <div id="demo">
+        <h1>The XMLHttpRequest Object</h1>
+        <button type="button" onclick="loadDoc()">Change Content</button>
+    </div>
+
+    <script>
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML =
+                        this.responseText;
+                }
+            };
+            xhttp.open("GET", "http://localhost:3000/order/history", true);
+            xhttp.send();
+
+            // $.ajax({
+            //     url: "http://localhost:3000/order/history",
+            //     type: 'GET',
+            //     cors: true,
+            //     contentType: 'application/json',
+            //     secure: true,
+            //     headers: {
+            //         'Access-Control-Allow-Origin': '*',
+            //     },
+            //     success: function (data) {
+            //         console.log(data)
+            //     }
+            // })
+        }
+    </script>
+
+</body>
+
+</html>
